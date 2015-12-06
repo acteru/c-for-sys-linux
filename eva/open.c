@@ -1,9 +1,9 @@
-/* create a new file with permissions and dont if it exists on linux*/
+/* create a new file with permissions and don't if it exists on linux*/
 #include <sys/stat.h>  // needed for mode_t permissions
-#include <sys/types.h> // ssize_t used for a count for bytes or an error indicaton
-#include <fcntl.h>     // file controll options like O_CREAT oder O_SYNC
+#include <sys/types.h> // ssize_t used for a count for bytes or an error indication
+#include <fcntl.h>     // file control options like O_CREAT oder O_SYNC
 #include <stdio.h>     // input output options
-#include <stdlib.h>    // converts filetypes
+#include <stdlib.h>    // converts file types
 #include <unistd.h>    // system call wrapper function (read, write, close)
 
 int main(int argc, char **argv) {                           // int main method
@@ -16,9 +16,9 @@ int main(int argc, char **argv) {                           // int main method
     fprintf(stderr, "Usage: %s filename\n", *argv);   // define the usage output
     return EXIT_FAILURE;
   }
-  new_file = argv[1];                                       // catch the firt argument (filename)
+  new_file = argv[1];                                       // catch the first argument (filename)
 
-  filedec = open(new_file, O_WRONLY|O_EXCL|O_CREAT, mode);  // file descriptor (new_file open-method, modevar)
+  filedec = open(new_file, O_WRONLY|O_EXCL|O_CREAT, mode);  // file descriptor (new_file open-method, mode var)
 
   if(filedec == -1) {                                       // deal with opening failure
     perror("failure while opening the file ");
