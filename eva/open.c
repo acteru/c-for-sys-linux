@@ -1,10 +1,10 @@
 /* create a new file with permissions and dont if it exists on linux*/
-#include <sys/stat.h>
-#include <sys/types.h>
-#include <fcntl.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
+#include <sys/stat.h>  // needed for mode_t permissions
+#include <sys/types.h> // ssize_t used for a count for bytes or an error indicaton
+#include <fcntl.h>     // file controll options like O_CREAT oder O_SYNC
+#include <stdio.h>     // input output options
+#include <stdlib.h>    // converts filetypes
+#include <unistd.h>    // system call wrapper function (read, write, close)
 
 int main(int argc, char **argv) {                           // int main method
   mode_t mode = S_IRUSR|S_IWUSR|S_IRGRP|S_IWGRP|S_IROTH;    // set permissions to rw-rw-r--
@@ -13,7 +13,7 @@ int main(int argc, char **argv) {                           // int main method
   umask(0);                                                 // set permissions for umask
 
   if(argv[1] == NULL) {
-    fprintf(stderr, "Usage: %s file to create\n", *argv);   // define the usage output
+    fprintf(stderr, "Usage: %s filename\n", *argv);   // define the usage output
     return EXIT_FAILURE;
   }
   new_file = argv[1];                                       // catch the firt argument (filename)
