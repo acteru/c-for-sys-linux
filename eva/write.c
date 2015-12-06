@@ -13,7 +13,7 @@
 
 int main(int argc, char **argv) {                               // int main method
   mode_t mode = S_IRUSR|S_IWUSR|S_IRGRP|S_IWGRP|S_IROTH;        // set permissions to rw-rw-r--
-  ssize_t size;                                                 // function ssize_t with size param
+  ssize_t size;                                                 // function ssize_t with size parameter
   int filedec;                                                  // integer for file descriptor
   char *string;                                                 // char declaration
   umask(0);                                                     // set permissions for umask
@@ -26,9 +26,9 @@ int main(int argc, char **argv) {                               // int main meth
     string = "there are no arguments\n"; 
   }
   else {
-    string  = argv[2];                                          // save thrid input into char-var
+    string  = argv[2];                                          // save third input into char-var
   }
-  size = strlen(string);                                        // get the stringlenght and save it in size
+  size = strlen(string);                                        // get the string length and save it in size
   filedec = open(argv[1], O_WRONLY | O_APPEND | O_CREAT, mode); // string is added at the end of the file O_APPEND
 
   if(filedec == -1) {                                           // check if file is open
